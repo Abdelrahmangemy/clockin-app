@@ -1,0 +1,77 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Clock-In API",
+        "description": "API documentation for the Clock-In application.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/worker/clock-in": {
+            "post": {
+                "summary": "Clock-in a worker",
+                "operationId": "1f516bfb647a77397c892e9c25aca6ef",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "worker_id": {
+                                        "type": "integer"
+                                    },
+                                    "timestamp": {
+                                        "type": "integer"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/worker/clock-ins": {
+            "get": {
+                "summary": "Get worker clock-ins",
+                "operationId": "4d9241a4dfc578a050f0239b8712b753",
+                "parameters": [
+                    {
+                        "name": "worker_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    }
+}
